@@ -1,9 +1,11 @@
-resource "aws_instance" "defaultNginx" {
-  ami           = var.AMIS[var.AWS_REGION]
+resource "aws_instance" "MattNginx" {
+  ##  ami           = var.AMIS[var.AWS_REGION]
+  ami           = data.aws_ami.latest-ubuntu.id
   instance_type = "t2.micro"
   key_name      = aws_key_pair.mykey.key_name
+  vpc_security_group_ids =  [aws_security_group.home-access.id]
   tags = {
-    Name = "defaultNginx"
+    Name = "MattNginx"
     Role = "Web"
   }
   provisioner "file" {
@@ -24,6 +26,6 @@ resource "aws_instance" "defaultNginx" {
   }
 }
 
-output "defaultNginxIPS" {
-  value = aws_instance.defaultNginx.public_ip
+output "MattNginx" {
+  value = aws_instance.MattNginx.public_ip
 }
