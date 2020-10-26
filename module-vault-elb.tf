@@ -22,13 +22,13 @@ resource "aws_elb" "vault" {
   security_groups = [aws_security_group.vault.id]
   subnets         = var.subnet_ids
 
-##  # Run the ELB in TCP passthrough mode
-##  listener {
-##    lb_port           = var.lb_port
-##    lb_protocol       = "TCP"
-##    instance_port     = var.vault_api_port
-##    instance_protocol = "TCP"
-##  }
+  ##  # Run the ELB in TCP passthrough mode
+  ##  listener {
+  ##    lb_port           = var.lb_port
+  ##    lb_protocol       = "TCP"
+  ##    instance_port     = var.vault_api_port
+  ##    instance_protocol = "TCP"
+  ##  }
 
   # HTTPS
   listener {

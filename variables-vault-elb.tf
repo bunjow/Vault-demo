@@ -5,7 +5,7 @@
 
 variable "name" {
   description = "The name to use for the ELB and all other resources in this module."
-  default = "ELB-VaultExample"
+  default     = "ELB-VaultExample"
 }
 
 #variable "vpc_id" {
@@ -16,12 +16,12 @@ variable "name" {
 variable "allowed_inbound_cidr_blocks" {
   description = "A list of CIDR-formatted IP address ranges from which the ELB will accept requests."
   type        = list(string)
-  default = ["74.64.243.117/32"]
+  default     = ["74.64.243.117/32"]
 }
 
 variable "vault_asg_name" {
   description = "Name of the Vault Autoscaling Group"
-  default ="vault-s3-example2020102317130584200000000a"
+  default     = "vault-s3-example2020102317130584200000000a"
 }
 
 # ---------------------------------------------------------------------------------------------------------------------
@@ -32,7 +32,7 @@ variable "vault_asg_name" {
 variable "subnet_ids" {
   description = "The subnet IDs into which the ELB should be deployed. You will typically want to deploy the ELB into public subnets so your Vault cluster can run in private subnets."
   type        = list(string)
-  default     = ["subnet-6998740f","subnet-f245f9bf","subnet-1e06ef41","subnet-6eae9e50","subnet-f864c2f6","subnet-967d96b7"]
+  default     = ["subnet-6998740f", "subnet-f245f9bf", "subnet-1e06ef41", "subnet-6eae9e50", "subnet-f864c2f6", "subnet-967d96b7"]
 }
 
 variable "create_dns_entry" {

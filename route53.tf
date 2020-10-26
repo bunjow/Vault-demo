@@ -73,7 +73,7 @@ resource "aws_route53_record" "PlainApache-record" {
 ##  records         = [aws_instance.mariadb-console.public_ip]
 ##}
 
-output "ns-servers" {
-  value = aws_route53_zone.bunjow.name_servers
-}
+##output "ns-servers" {
+##  value = aws_route53_zone.bunjow.name_servers
+##}
 
