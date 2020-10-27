@@ -50,13 +50,13 @@ resource "aws_instance" "DemoApache" {
   }
 }
 #
-## Create DNS record
+## Create Route53 DNS record
 #
 resource "aws_route53_record" "DemoApache-record" {
   zone_id         = aws_route53_zone.bunjow.zone_id
   name            = "demo.bunjow.com"
-  type            = "CNAME"
-  ttl             = "120"
+  type            = "A"
+  ttl             = "60"
   allow_overwrite = true
   records         = [aws_instance.DemoApache.public_ip]
 }
