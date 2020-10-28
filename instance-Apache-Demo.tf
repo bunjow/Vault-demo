@@ -1,5 +1,4 @@
 resource "aws_instance" "DemoApache" {
-  ##  ami           = var.AMIS[var.AWS_REGION]
   ami                    = data.aws_ami.latest-ubuntu.id
   instance_type          = "t2.micro"
   key_name               = aws_key_pair.mykey.key_name
@@ -13,9 +12,8 @@ resource "aws_instance" "DemoApache" {
   ## Use data-dbinfo.tf to provision dbinfo.inc here: 
   #
   user_data = data.template_cloudinit_config.db_info.rendered
-  #
+
   ## Install Apache, PHP, MySQl
-  #
   provisioner "file" {
     source      = "Scripts/apache-demo.sh"
     destination = "/tmp/script.sh"
@@ -27,7 +25,7 @@ resource "aws_instance" "DemoApache" {
     ]
   }
   #
-  ## Install index.php
+  ## Install webapp
   #
   provisioner "file" {
     source      = "Files/ShowTable.php"
@@ -39,9 +37,7 @@ resource "aws_instance" "DemoApache" {
       "sudo rm /var/www/html/index.html",
     ]
   }
-  #
-  ## set up SSH connection to provision
-  #
+
   connection {
     host        = coalesce(self.public_ip, self.private_ip)
     type        = "ssh"
