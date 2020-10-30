@@ -6,6 +6,7 @@ resource "aws_security_group" "allow-mariadb" {
     to_port         = 3306
     protocol        = "tcp"
     security_groups = [aws_security_group.home-access.id] # allowing access from our example instance
+    cidr_blocks = ["0.0.0.0/0"]
   }
   egress {
     from_port   = 0

@@ -31,5 +31,5 @@ mysqli_close($con);
 
 $password=DB_PASSWORD;
 echo "<br>";
-echo  "Using DB_PASSWORD ==>  $password \n";
+//echo  "Using DB_PASSWORD ==>  $password \n";
 ?>
